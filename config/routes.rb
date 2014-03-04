@@ -1,5 +1,7 @@
 Salon1::Application.routes.draw do
 
+resources :salons
+
   root 'welcome#index'
 
 
