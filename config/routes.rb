@@ -6,9 +6,9 @@ end
 
 resources :users
 resources :sessions
+resources :clients
 
   root 'welcome#index'
-
 
 end
 
