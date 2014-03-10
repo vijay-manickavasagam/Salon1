@@ -1,6 +1,6 @@
 class SalonsController < ApplicationController
 
-  def new
+   def new
     @salon = Salon.new
   end
 

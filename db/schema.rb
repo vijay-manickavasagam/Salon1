@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140308175152) do
+ActiveRecord::Schema.define(version: 20140308190425) do
 
   create_table "appointments", force: true do |t|
     t.integer  "client_id"
@@ -44,12 +44,10 @@ ActiveRecord::Schema.define(version: 20140308175152) do
   create_table "comments", force: true do |t|
     t.string   "commenter"
     t.text     "body"
-    t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "salon_id"
   end
-
-  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
 
   create_table "prices", force: true do |t|
     t.integer  "salon_id"

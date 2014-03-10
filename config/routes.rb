@@ -4,6 +4,8 @@ resources :salons do
   resources :comments
 end
 
+resources :users
+resources :sessions
 
   root 'welcome#index'
 
