@@ -5,8 +5,4 @@ class CommentsController < ApplicationController
     @comment = @salon.comments.create(params[:comment].permit(:commenter, :body))
     redirect_to salon_path(@salon)
   end
-
-
-
-
 end
