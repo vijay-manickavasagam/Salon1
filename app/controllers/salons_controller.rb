@@ -35,6 +35,7 @@ def update
     redirect_to @salon
   else
     render 'edit'
+    # Render edit action?
   end
 end
 
@@ -42,6 +43,7 @@ def destroy
   @salon = Salon.find(params[:id])
   @salon.destroy
   redirect_to "/salons"
+  # where does it redirect to?
 end
 
 private
