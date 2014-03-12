@@ -2,6 +2,7 @@ class ClientsController < ApplicationController
 
 
 def show
+  #client_show = Client.find_by(params[: user_id])
 end
 
   # def new
@@ -9,22 +10,23 @@ end
   # end
 
   def create
-    @client = Client.new(client_params)
-
-    #new_client.first_name = params["first_name"]
-    #new_client.last_name = params["last_name"]
-    #new_client.sex = params["sex"]
-    #new_client.image_url = params["image_url"]
-    #new_client.date_of_birth = params["date_of_birth"]
-    #new_client.email = params["email"]
-    ##new_client.phone = params["phone"]
-    client.save
+    # @client = Client.new(client_params)
+    @client = Client.new
+    @client.user_id = params["user_id"]
+    @client.first_name = params["first_name"]
+    @client.last_name = params["last_name"]
+    @client.sex = params["sex"]
+    @client.image_url = params["image_url"]
+    @client.date_of_birth = params["date_of_birth"]
+    @client.email = params["email"]
+    @client.phone = params["phone"]
+    @client.save
     redirect_to "/clients/show"
   end
 
-#   def index
-#   @client = Client.all
-#   end
+  def index
+   @client = Client.all
+  end
 
 
 
@@ -47,11 +49,10 @@ end
 #   redirect_to "/clients"
 # end
 
-# private
-#   def client_params
-#     params.require(:client).permit(:client_name, :owner_name, :contact_name, :phone, :address, :email)
-#   end
+ # private
+ #  def client_params
+ #     params.require(:client).permit(:client_name, :owner_name, :contact_name, :phone, :address, :email)
+ #  end
 
 # end
-
 end
