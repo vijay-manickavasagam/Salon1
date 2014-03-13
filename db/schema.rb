@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20140303050320) do
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
-    # skip this
   end
 
   create_table "clients", force: true do |t|
@@ -49,7 +48,6 @@ ActiveRecord::Schema.define(version: 20140303050320) do
     t.integer  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
-    # Skip this
   end
 
   create_table "salons", force: true do |t|
