@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
     if user.present?
       if user.password == session_params[:password]
         session[:login] = user.id
+        session[:profile] = user.profile
         redirect_to root_url, notice: "Wazzzup!"
       else
         redirect_to root_url, notice: "Wrong Password."
