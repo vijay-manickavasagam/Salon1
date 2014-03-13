@@ -1,17 +1,19 @@
 class SessionsController < ApplicationController
+
   def new
   end
 
   def destroy
     reset_session
     redirect_to root_url, notice: "See ya!"
+
   end
 
   def create
-    user = User.find_by(:first_name => params[:fname])
+    user = User.find_by(:login => session_params[:login])
     if user.present?
-      if user.password == params[:pwd]
-        session[:user_id] = user.id
+      if user.password == session_params[:password]
+        session[:login] = user.id
         redirect_to root_url, notice: "Wazzzup!"
       else
         redirect_to root_url, notice: "Wrong Password."
@@ -19,6 +21,11 @@ class SessionsController < ApplicationController
     else
       redirect_to root_url, notice: "Unknown user."
     end
+  end
+
+private
+  def session_params
+    params.require(:session).permit(:login, :password)
   end
 
 end
