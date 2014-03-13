@@ -13,7 +13,14 @@ class UsersController < ApplicationController
 end
 
   def show
-      $user = User.find_by(:id => params[:user_id])
+   if @user.profile = "Client"
+  redirect_to :controller=>'clients',:action=>'edit',:user_id => params[:id]
+  elsif @user.profile == "Salon"
+  redirect_to :controller=>'salons',:action=>'edit',:user_id => params[:id]
+   end
+   
+    # @client = Client.find_by(:id => login[:session])  
+    #   @user = User.find_by(:id => params[:user_id])
       # if @user.id != session[:user_id]
       #   redirect_to root_url, notice: "Nice try"
       # end
@@ -23,9 +30,10 @@ end
   @user = User.all
 end
 
-def show
-  @user=User.find(params[:id])
-end
+# def show
+#   @user=User.find(params[:id])
+#   @user_profile = Client.find_by(:user_id => @user.id)
+# end
 
 def edit
   @user = User.find(params[:id])
@@ -35,6 +43,7 @@ def update
   @user = User.find(params[:id])
   if @users.update(params[:user].permit(:login, :password, :profile))
     redirect_to @user
+
   else
     render 'edit'
     # Render edit action?

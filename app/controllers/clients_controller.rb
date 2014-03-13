@@ -5,15 +5,17 @@ def show
   #@client_show = Client.find_by(:id => )
   #@client_show = Client.all
 # @client = Client.find(params[:id])
-  @client = Client.find(params[:id])
+ @client = Client.find(params[:id])
 end
 
   def new
     @client = Client.new
+    #@user = User.find_by(:id => params[:user_id])
   end
 
   def create
     @client = Client.new(client_params)
+    @client.user_id = session[:login]
     # @client = Client.new
     # @client.user_id = params["user_id"]
     # @client.first_name = params["first_name"]
@@ -55,5 +57,4 @@ end
   def client_params
      params.require(:client).permit(:first_name, :last_name, :user_id, :sex, :image_url, :phone, :email, :date_of_birth)
   end
-
 end
