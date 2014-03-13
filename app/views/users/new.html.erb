@@ -2,7 +2,7 @@
 <div class="page-header">
 </div>
 
-<form action="/users/create" class="col-md-4">
+<!-- <form action="/users/create" class="col-md-4">
 
   <div class="form-group">
     <label class="control-label">Enter a Login:</label>
@@ -24,4 +24,38 @@
   <button type="submit" class="btn btn-success btn-md">Sign Me Up!</button>
   or
   <%= link_to "Go Back", "/" %>
-</form>
+</form> -->
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited
+      this user from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :Login %><br>
+    <%= f.text_field :login %>
+    </p>
+
+<p>
+    <%= f.label :Password %><br>
+    <%= f.text_field :password %>
+</p>
+
+<p>
+    <%= f.label :Profile %><br>
+    <%= f.text_field :profile %>
+</p>
+
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
