@@ -2,7 +2,9 @@ class ClientsController < ApplicationController
 
 
 def show
-  #client_show = Client.find_by(params[: user_id])
+  #@client_show = Client.find_by(:id => )
+  #@client_show = Client.all
+#  @client_show = Client.find_by params[: user_id])
 end
 
   # def new
@@ -49,10 +51,10 @@ end
 #   redirect_to "/clients"
 # end
 
- # private
- #  def client_params
- #     params.require(:client).permit(:client_name, :owner_name, :contact_name, :phone, :address, :email)
- #  end
+ private
+  def client_params
+     params.require(:client).permit(:first_name, :last_name, :user_id, :sex, :image_url, :phone, :email, :date_of_birth)
+  end
 
 # end
 end
