@@ -2,6 +2,7 @@ Salon1::Application.routes.draw do
 
 resources :salons do
  resources :comments
+ resources :stylists
 end
 
 resources :users
