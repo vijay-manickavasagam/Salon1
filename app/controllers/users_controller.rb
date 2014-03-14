@@ -13,11 +13,12 @@ class UsersController < ApplicationController
 end
 
   def show
-   if @user.profile = "Client"
+  @user = User.find_by(:id => session[:login])
+  if @user.profile = "Client"
   redirect_to :controller=>'clients',:action=>'edit',:user_id => params[:id]
   elsif @user.profile == "Salon"
   redirect_to :controller=>'salons',:action=>'edit',:user_id => params[:id]
-   end
+  end
    
     # @client = Client.find_by(:id => login[:session])  
     #   @user = User.find_by(:id => params[:user_id])
